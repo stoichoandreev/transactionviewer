@@ -1,0 +1,15 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activities.StartActivity" >
+    <item android:id="@+id/action_update"
+        android:title="@string/action_update"
+        android:icon="@mipmap/sync"
+        android:orderInCategory="100"
+        app:showAsAction="always" />
+    <item android:id="@+id/action_swich_test_data_source"
+        android:title="@string/action_switch_test_data_source"
+        android:icon="@mipmap/switch_icon"
+        android:orderInCategory="100"
+        app:showAsAction="always" />
+</menu>

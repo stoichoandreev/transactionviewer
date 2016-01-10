@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">BadooTest</string>
+    <string name="action_update">Update</string>
+    <string name="action_switch_test_data_source">Switch Data Source</string>
+    <string name="loading">Loading</string>
+    <string name="transition_action_button_name">action_button</string>
+    <string name="products">Products</string>
+    <string name="transaction_number">%1$d Transactions</string>
+    <string name="transaction_to">Transactions to %1$s</string>
+    <string name="total">Total: &#163; %1$s</string>
+    <string name="pound">&#163; %1$s</string>
+    <string name="no_content">No available content</string>
+</resources>
