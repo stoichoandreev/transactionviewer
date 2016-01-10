@@ -81,7 +81,7 @@ public class LoadAllApplicationData extends AsyncTask<String, String, Boolean> {
     private boolean manageCurrency() throws IOException,JSONException{
         if(context == null) return false;
 
-        Log.d(TAG, "manageCurrency start");//take around 200 - 300 mls
+        Log.d(TAG, "manageCurrency start");//take around 200 - 300 mls to end
         final String ratesFileName = Preferences.isTestDataTwo ? Preferences.RATES_FILE_NAME_TWO : Preferences.RATES_FILE_NAME;
         final String transactionFileName = Preferences.isTestDataTwo ? Preferences.TRANSACTIONS_FILE_NAME_TWO : Preferences.TRANSACTIONS_FILE_NAME;
 
@@ -110,7 +110,7 @@ public class LoadAllApplicationData extends AsyncTask<String, String, Boolean> {
         return true;
     }
     private void getAllProductsTransactions(Transaction [] transactions){
-        if(transactions != null){
+        if(transactions != null && transactions.length > 0){
             for(Transaction trans : transactions){
                 if(checkDoesProductExist(trans.getSku())){
                     trans.convertToGBP();

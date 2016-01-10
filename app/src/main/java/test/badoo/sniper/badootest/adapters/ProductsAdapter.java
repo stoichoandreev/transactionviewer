@@ -102,8 +102,9 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         holder.subHeaderText.setText(String.format(context.getResources().getString(R.string.transaction_number),products.get(position).getTransactionNumbers()));
     }
     private void setupTransactionItem(ViewHolder holder, int position){
+        final String cantConvertedText = (transactions.get(position).hasConvertedValue()) ? "": context.getResources().getString(R.string.cant_convert);
         holder.headerText.setText(transactions.get(position).getAmount() + " " + transactions.get(position).getCurrency());
-        holder.subHeaderText.setText(String.format(context.getResources().getString(R.string.pound),String.format("%.02f", transactions.get(position).getConvertedAmount())));
+        holder.subHeaderText.setText((String.format(context.getResources().getString(R.string.pound),String.format("%.02f", transactions.get(position).getConvertedAmount()))+cantConvertedText));
     }
     public void setAdapterClickListener(AdapterListener listener){
         this.itemClickListener = listener;

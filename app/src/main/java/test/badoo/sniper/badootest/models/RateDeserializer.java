@@ -19,9 +19,13 @@ public class RateDeserializer implements JsonDeserializer<RateResponse> {
     public RateResponse deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
             throws JsonParseException {
 //        final JSONArray jsonObject = json.getAsJsonArray();
-
-        final Rate[] rates = context.deserialize(json, Rate[].class);
-        List<Rate> ratesList = new ArrayList<>(Arrays.asList(rates));
+        List<Rate> ratesList = null;
+        try {
+            final Rate[] rates = context.deserialize(json, Rate[].class);
+            ratesList = new ArrayList<>(Arrays.asList(rates));
+        }catch (JsonParseException ex){
+            ratesList = new ArrayList<>();//return empty to prevent crashes
+        }
 
         final RateResponse allData = new RateResponse();
 

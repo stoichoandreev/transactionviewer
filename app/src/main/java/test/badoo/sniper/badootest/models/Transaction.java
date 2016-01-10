@@ -53,6 +53,9 @@ public class Transaction implements Serializable{
     public float getConvertedAmount(){
         return convertedAmountToGBP;
     }
+    public boolean hasConvertedValue(){
+        return (convertedAmountToGBP > 0.0f);
+    }
 
     public void convertToGBP(){
         try {
@@ -73,13 +76,16 @@ public class Transaction implements Serializable{
                 }catch (NumberFormatException ex){
                     ex.printStackTrace();
                 }
-                for(Vertex ver : path){
-                    float edgeRate = algorithm.getRate().get(ver).floatValue();
-                    if(edgeRate == 0.0f) continue;//do nothing
-                    if(convertedAmountToGBP == 0.0f){
-                        convertedAmountToGBP += (floatAmount * algorithm.getRate().get(ver).floatValue());
-                    }else {
-                        convertedAmountToGBP = (convertedAmountToGBP * algorithm.getRate().get(ver).floatValue());
+                //convert only if we have rates
+                if(path != null && path.size() > 0) {
+                    for (Vertex ver : path) {
+                        float edgeRate = algorithm.getRate().get(ver).floatValue();
+                        if (edgeRate == 0.0f) continue;//do nothing
+                        if (convertedAmountToGBP == 0.0f) {
+                            convertedAmountToGBP += (floatAmount * algorithm.getRate().get(ver).floatValue());
+                        } else {
+                            convertedAmountToGBP = (convertedAmountToGBP * algorithm.getRate().get(ver).floatValue());
+                        }
                     }
                 }
             }

@@ -112,7 +112,7 @@ public class OtherActivity extends MyBaseActivity implements Animation.Animation
     }
     private void loadTransitionsList() {
         noContentText.setVisibility(View.GONE);
-        if((allTransactions == null || allTransactions.size() == 0) && adapter.getItemCount() == 0){
+        if(allTransactions == null || allTransactions.size() == 0){
             noContentText.setVisibility(View.VISIBLE);
         }
         adapter.setTransactions(allTransactions, true);

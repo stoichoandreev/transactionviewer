@@ -19,9 +19,13 @@ public class TransactionDeserializer implements JsonDeserializer<TransactionResp
     @Override
     public TransactionResponse deserialize(final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
             throws JsonParseException {
-
-        final Transaction[] transactions = context.deserialize(json, Transaction[].class);
+        Transaction[] transactions = null;
+        try {
+            transactions = context.deserialize(json, Transaction[].class);
 //        List<Transaction> transactionList = new ArrayList<>(Arrays.asList(transactions));
+        }catch (JsonParseException ex){
+            transactions = new Transaction[0];
+        }
 
         final TransactionResponse allData = new TransactionResponse();
 

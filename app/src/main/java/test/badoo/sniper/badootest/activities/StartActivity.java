@@ -90,6 +90,9 @@ public class StartActivity extends MyBaseActivity implements View.OnClickListene
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.action_button:
+                //if not items don't do anything
+                if(adapter.getItemCount() == 0) return;
+
                 Intent intent = new Intent(this,OtherActivity.class);
                 if(productsTransactions.containsKey(adapter.getProductName(selectedPosition))) {
                     intent.putExtra(Preferences.SELECTED_PRODUCT, (ArrayList)productsTransactions.get(adapter.getProductName(selectedPosition)));
@@ -119,7 +122,7 @@ public class StartActivity extends MyBaseActivity implements View.OnClickListene
         this.productsTransactions.putAll(productsTransactions);
 
         noContentText.setVisibility(View.GONE);
-        if((allProducts == null || allProducts.size() == 0) && adapter.getItemCount() == 0){
+        if(allProducts == null || allProducts.size() == 0){
             noContentText.setVisibility(View.VISIBLE);
         }
         adapter.setProducts(allProducts, true);
